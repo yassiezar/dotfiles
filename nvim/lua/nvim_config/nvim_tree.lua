@@ -10,13 +10,5 @@ require("nvim-tree").setup({
   }
 })
 
-local Remap = require("nvim_config.keymap")
-local nnoremap = Remap.nnoremap
-local vnoremap = Remap.vnoremap
-local inoremap = Remap.inoremap
-local xnoremap = Remap.xnoremap
-local nmap = Remap.nmap
-local opts = { silent = true }
-
-nnoremap("<leader>tt", "<cmd>NvimTreeToggle<cr>", opts)
-nnoremap("<leader>tf", "<cmd>NvimTreeFocus<cr>", opts)
+vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>NvimTreeToggle<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>tf', '<cmd>NvimTreeFocus<cr>', { noremap = true, silent = true })
