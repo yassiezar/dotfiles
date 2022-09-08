@@ -6,8 +6,16 @@ require("nvim-tree").setup({
     adaptive_size = true,
     width = 25,
     number = true,
-    relativenumber = true
-  }
+    relativenumber = true,
+  },
+  actions = {
+    open_file = {
+        quit_on_open = true,
+    },
+  },
+  filters = {
+    custom = { "^.git$" } 
+  },
 })
 
 vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>NvimTreeToggle<cr>', { noremap = true, silent = true })
