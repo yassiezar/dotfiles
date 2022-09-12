@@ -16,6 +16,11 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
   end,
 })
 
+-- Autocmd to close quickfix upon selecting an item
+--local autocmd = vim.api.nvim_create_autocmd
+--autocmd({ "BufLeave" }, { pattern = { "*" }, command = "if &buftype == 'quickfix'|q|endif" })
+vim.api.nvim_create_autocmd({ "BufLeave"}, { pattern = {"*"}, command = "if &buftype == 'quickfix'|q|endif" })
+
 -- Cursorline setup
 require('nvim-cursorline').setup {
   cursorline = {
