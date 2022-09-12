@@ -25,6 +25,7 @@ return require("packer").startup(function()
       requires = {"tami5/sqlite.lua"}
     }
     use('bi0ha2ard/telescope-ros.nvim') -- needs colcon (ROS2)
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- Statusline
     use {
