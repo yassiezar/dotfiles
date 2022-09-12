@@ -4,6 +4,10 @@ return require("packer").startup(function()
     
     --- Colour scheme stuff
     use("morhetz/gruvbox")
+    use { "catppuccin/nvim", 
+      as = "catppuccin",
+      run = ":CatppuccinCompile"
+    }
 
     --- LSP and linting configurations
     use 'neovim/nvim-lspconfig'
