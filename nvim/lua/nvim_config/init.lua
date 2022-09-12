@@ -4,11 +4,12 @@ require("nvim_config.statusline")
 require("nvim_config.telescope")
 require("nvim_config.barbar")
 require("nvim_config.nvim_tree")
+require("nvim_config.cmp")
 
 -- Linting autocmd
 require("lint").linters_by_ft = {
     python = {"pylint", "codespell", },
-    cpp = {"cppcheck", "clangtidy", "codespell"},
+    cpp = {"codespell"},
     tex = {"chktex", "codespell"},
 --    cmake = {"cmakelint", },
 --    lua = {"luacheck", "codespell", },
