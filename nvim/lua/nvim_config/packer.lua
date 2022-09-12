@@ -9,8 +9,7 @@ return require("packer").startup(function()
       run = ":CatppuccinCompile"
     }
 
-    --- LSP and linting configurations
-    use 'neovim/nvim-lspconfig'
+    --- Linting configurations
     use 'mfussenegger/nvim-lint'
 
     -- ASync setup

@@ -7,10 +7,14 @@ require("nvim_config.nvim_tree")
 
 -- Linting autocmd
 require("lint").linters_by_ft = {
-    python = {"pylint"},
-    cpp = {"cppcheck", "clangtidy"}
+    python = {"pylint", "codespell", },
+    cpp = {"cppcheck", "clangtidy", "codespell"},
+    tex = {"chktex", "codespell"},
+--    cmake = {"cmakelint", },
+--    lua = {"luacheck", "codespell", },
 }
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+-- vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   callback = function()
     require("lint").try_lint()
   end,
