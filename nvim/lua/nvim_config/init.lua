@@ -5,6 +5,7 @@ require("nvim_config.telescope")
 require("nvim_config.barbar")
 require("nvim_config.nvim_tree")
 require("nvim_config.cmp")
+require("nvim_config.formatting")
 
 -- Linting autocmd
 require("lint").linters_by_ft = {
