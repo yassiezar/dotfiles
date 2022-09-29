@@ -17,6 +17,7 @@ return require("packer").startup(function()
 
     -- Devicons
     use("kyazdani42/nvim-web-devicons")
+    use('onsails/lspkind.nvim')
 
     -- Telescope for file preview
     use("nvim-telescope/telescope.nvim")
@@ -38,7 +39,7 @@ return require("packer").startup(function()
       requires = {'kyazdani42/nvim-web-devicons'}
     }
 
-    -- Code highlightinh
+    -- Code highlighting
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
     -- NVim Tree
@@ -58,7 +59,9 @@ return require("packer").startup(function()
     use('hrsh7th/cmp-cmdline')
     use('hrsh7th/nvim-cmp')
 
+    -- Snippets
     use('L3MON4D3/LuaSnip')
+    use('rafamadriz/friendly-snippets')
     use('saadparwaiz1/cmp_luasnip')
 
     -- Formatting

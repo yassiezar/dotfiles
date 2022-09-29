@@ -1,6 +1,5 @@
 local cmp = require'cmp'
-local luasnip = require'luasnip'
-require('luasnip.loaders.from_vscode').lazy_load()
+local lspkind = require'lspkind'
 
 -- CMP setup
 local select_opts = {behavior = cmp.SelectBehavior.Select}
@@ -55,10 +54,33 @@ cmp.setup({
     { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
+  }, {
     { name = 'buffer' },
   }),
   formatting = {
     fields = { 'menu', 'abbr', 'kind' },
+    format = lspkind.cmp_format({
+      mode = 'symbol_text', -- show symbol and text annotations
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+
+      -- The function below will be called before any actual modifications from lspkind
+      -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+      before = function (entry, vim_item)
+        return vim_item
+      end
+    }),
+    -- format = function(entry, vim_item)
+    --   if vim.tbl_contains({ 'path' }, entry.source.name) then
+    --     local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
+    --     if icon then
+    --       vim_item.kind = icon
+    --       vim_item.kind_hl_group = hl_group
+    --       return vim_item
+    --     end
+    --   end
+    --   return lspkind.cmp_format({ with_text = false })(entry, vim_item)
+    -- end,
   }
 })
 
