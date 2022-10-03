@@ -11,6 +11,14 @@ formatter.setup({
           cwd = vim.fn.expand("%:p:h")
         }
       end
+    },
+    python = {
+      function()
+        return{
+          exe = "yapf",
+          stdin = true,
+        }
+      end
     }
   }
 })
@@ -18,4 +26,5 @@ formatter.setup({
 vim.api.nvim_set_keymap('n', '<leader>pf', "<cmd>FormatWrite<cr>", { noremap = true, silent = true })
 
 -- Format on save
+--vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = {"*.py"}, command = "lua vim.lsp.buf.formatting()" })
 vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = {"*"}, command = "FormatWrite" })

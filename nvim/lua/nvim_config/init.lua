@@ -6,15 +6,17 @@ require("nvim_config.barbar")
 require("nvim_config.nvim_tree")
 require("nvim_config.cmp")
 require("nvim_config.formatting")
+require("nvim_config.snippet")
 
 -- Linting autocmd
 require("lint").linters_by_ft = {
-    python = {"pylint", "codespell", },
+--    python = {"pylint", "codespell" },
     cpp = {"codespell"},
     tex = {"chktex", "codespell"},
 --    cmake = {"cmakelint", },
 --    lua = {"luacheck", "codespell", },
 }
+
 -- vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   callback = function()

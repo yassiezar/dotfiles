@@ -1,4 +1,5 @@
 local lspconfig = require('lspconfig')
+local util = require('lspconfig.util')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -49,9 +50,60 @@ require'lspconfig'.clangd.setup{
     },
 }
 
-require('lspconfig').pyright.setup{
+require'lspconfig'.pylsp.setup {
   on_attach = on_attach,
   flags = lsp_flags,
-  capabilities = capabilities
+  capabilities = capabilities,
+  cmd = { 'pylsp' },
+  root_dir = function(fname)
+    local root_files = {
+      'pyproject.toml',
+      'setup.py',
+      'setup.cfg',
+      'requirements.txt',
+      'Pipfile'
+    }
+    return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
+  end,
+  single_file_support = true,
+  settings = {
+    pylsp = {
+      configurationSources = {"pycodestyle"},
+      autopep8 = {
+        enabled = false -- use yapf
+      },
+      yapf = {
+        enabled = false,
+      },
+      pycodestyle = {
+        enabled = true,
+        indentSize = 4,
+        maxLineLength = 80
+      },
+      flake8 = {
+        enabled = false,
+        indentSize = 4,
+        maxLineLength = 80
+      },
+      rope = {
+        enables = true,
+      },
+      mccabe = {
+        enabled = true,
+      },
+      pyflakes = {
+        enabled = true,
+      },
+      pylint = {
+        enabled = false,
+      }
+    }
+  }
 }
+
+-- require('lspconfig').pyright.setup{
+--   on_attach = on_attach,
+--   flags = lsp_flags,
+--   capabilities = capabilities
+-- }
 
