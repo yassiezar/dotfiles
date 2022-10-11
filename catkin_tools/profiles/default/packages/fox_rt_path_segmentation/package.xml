@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>fox_rt_path_segmentation</name>
+  <version>1.0.2</version>
+  <description>The fox_rt_path_segmentation package</description>
+
+  <maintainer email="madhuri.patil@fox-robotics.com">Madhuri</maintainer>
+
+  <license>Fox Robotics, 2022</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <exec_depend>roscpp</exec_depend>
+  <depend>message_filters</depend>
+  <depend>image_geometry</depend>
+
+</package>
