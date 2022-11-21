@@ -4,5 +4,7 @@ vim.api.nvim_set_keymap('n', '<leader>3', '<cmd>BufferGoto 3<cr>', { noremap = t
 vim.api.nvim_set_keymap('n', '<leader>4', '<cmd>BufferGoto 4<cr>', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>5', '<cmd>BufferGoto 5<cr>', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>6', '<cmd>BufferGoto 6<cr>', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>7', '<cmd>BufferGoto 7<cr>', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>8', '<cmd>BufferGoto 8<cr>', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>c', '<cmd>BufferClose<cr>', { noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>C', '<cmd>BufferAllButPinned<cr>', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>C', '<cmd>BufferCloseAll<cr>', { noremap = true, silent = true})
