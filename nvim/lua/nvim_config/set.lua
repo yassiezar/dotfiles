@@ -12,6 +12,8 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
+vim.opt.mouse=""
+
 vim.opt.wrap = true
 
 vim.opt.swapfile = false
