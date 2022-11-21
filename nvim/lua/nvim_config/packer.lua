@@ -64,6 +64,17 @@ return require("packer").startup(function()
     use('rafamadriz/friendly-snippets')
     use('saadparwaiz1/cmp_luasnip')
 
+    -- Annotation (docstrings)
+    use{
+      'danymat/neogen',
+      config = function()
+        require('neogen').setup { 
+          snippet_engine = 'luasnip'
+        }
+      end,
+      requires = 'nvim-treesitter/nvim-treesitter',
+    }
+
     -- Formatting
     use('mhartington/formatter.nvim')
 end)
