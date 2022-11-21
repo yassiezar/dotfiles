@@ -30,8 +30,9 @@ cmp.setup({
     ['<C-n>'] = cmp.mapping.select_next_item(select_opts),
     ['<Tab>'] = cmp.mapping(function(fallback)
         local col = vim.fn.col('.') - 1
-      
-        if cmp.visible() then
+        if require'neogen'.jumpable() then
+          require'neogen'.jump_next()
+        elseif cmp.visible() then
           cmp.select_next_item(select_opts)
         elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
           fallback()
