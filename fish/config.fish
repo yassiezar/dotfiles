@@ -1,10 +1,10 @@
 zoxide init fish | source
 
 set -gx EDITOR nvim
+set -gx VISUAL nvim
 
 # Generated for envman. Do not edit.
 test -s "$HOME/.config/envman/load.fish"; and source "$HOME/.config/envman/load.fish"
-
 
 #bobthefish theme
 #set -g theme_display_git no
@@ -12,7 +12,7 @@ set -g theme_display_git_dirty yes
 set -g theme_display_git_untracked yes
 set -g theme_display_git_ahead_verbose yes
 set -g theme_display_git_dirty_verbose yes
-#set -g theme_display_git_stashed_verbose yes
+set -g theme_display_git_stashed_verbose yes
 set -g theme_display_git_default_branch yes
 set -g theme_git_default_branches master main
 #set -g theme_git_worktree_support yes
