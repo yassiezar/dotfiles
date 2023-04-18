@@ -16,7 +16,7 @@ return require("packer").startup(function()
     use("nvim-lua/plenary.nvim")
 
     -- Devicons
-    use("kyazdani42/nvim-web-devicons")
+    use("nvim-tree/nvim-web-devicons")
     use('onsails/lspkind.nvim')
 
     -- Telescope for file preview
@@ -31,12 +31,12 @@ return require("packer").startup(function()
     -- Statusline
     use {
       'nvim-lualine/lualine.nvim',
-      requires = {'kyazdani42/nvim-web-devicons', opt = true}
+      requires = {'nvim-tree/nvim-web-devicons', opt = true}
     }
     -- Tabline
     use {
       'romgrk/barbar.nvim',
-      requires = {'kyazdani42/nvim-web-devicons'}
+      requires = {'nvim-tree/nvim-web-devicons'}
     }
 
     -- Code highlighting
@@ -44,8 +44,8 @@ return require("packer").startup(function()
 
     -- NVim Tree
     use {
-      'kyazdani42/nvim-tree.lua',
-      requires = {'kyazdani42/nvim-web-devicons'}
+      'nvim-tree/nvim-tree.lua',
+      requires = {'nvim-tree/nvim-web-devicons'}
     }
 
     -- Element highlighting

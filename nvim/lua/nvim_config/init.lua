@@ -10,11 +10,11 @@ require("nvim_config.snippet")
 
 -- Linting autocmd
 require("lint").linters_by_ft = {
---    python = {"pylint", "codespell" },
+    python = {"pylint", "codespell" },
     cpp = {"codespell"},
     tex = {"chktex", "codespell"},
 --    cmake = {"cmakelint", },
---    lua = {"luacheck", "codespell", },
+    lua = {"luacheck", "codespell", },
 }
 
 -- vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
@@ -54,3 +54,7 @@ vim.api.nvim_set_keymap('i', '<A-k>', '<esc>:m .-2<cr>==gi', opts)
 vim.api.nvim_set_keymap('v', '<A-j>', ":m '>+1<cr>gv=gv", opts)
 vim.api.nvim_set_keymap('v', '<A-k>', ":m '<-2<cr>gv=gv", opts)
 vim.api.nvim_set_keymap('n',  '<leader>doc', '<cmd>lua require("neogen").generate()<cr>', opts)
+
+vim.api.nvim_set_keymap('n', "<leader>y", [["+y]], opts)
+vim.api.nvim_set_keymap('v', "<leader>y", [["+y]], opts)
+vim.api.nvim_set_keymap('n', "<leader>Y", [["+Y]], opts)

@@ -84,9 +84,12 @@ ls.setup({
 -- })
 ls.add_snippets('c', {})
 ls.add_snippets('py', {})
+ls.add_snippets('shell', {})
 
-ls.filetype_extend('cpp', {'cpp', 'c'})
-ls.filetype_extend('c', {'cpp', 'c'})
+ls.filetype_extend('cpp', {'cpp'})
+ls.filetype_extend('c', {'cpp'})
 ls.filetype_extend('py', {'python'})
+ls.filetype_extend('shell', {'sh', 'bash'})
 
+-- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } }) 
 require("luasnip.loaders.from_vscode").lazy_load() 
