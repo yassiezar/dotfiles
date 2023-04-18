@@ -69,19 +69,19 @@ ls.setup({
 	end,
 })
 
-ls.add_snippets('cpp', {
-  s("/**", {
-    t({"/**", ""}),
-    t({"* @file ", ""}),  
-    t({"* @author Jacobus Lock <jacobus.lock@fox-robotics.com>", ""}),  
-    t({"* @brief ", ""}),  
-    t({"* @date ", ""}),  
-    t({"*", ""}),  
-    t({"* @copyright Fox Robotics Ltd., 2022", ""}),  
-    t({"*/", ""}),  
---     t(split_path(vim.api.nvim_buf_get_name(0)), '/'),
-  })
-})
+-- ls.add_snippets('cpp', {
+--   s("/**", {
+--     t({"/**", ""}),
+--     t({"* @file ", ""}),  
+--     t({"* @author Jacobus Lock <jacobus.lock@fox-robotics.com>", ""}),  
+--     t({"* @brief ", ""}),  
+--     t({"* @date ", ""}),  
+--     t({"*", ""}),  
+--     t({"* @copyright Fox Robotics Ltd., 2022", ""}),  
+--     t({"*/", ""}),  
+-- --     t(split_path(vim.api.nvim_buf_get_name(0)), '/'),
+--   })
+-- })
 ls.add_snippets('c', {})
 ls.add_snippets('py', {})
 
