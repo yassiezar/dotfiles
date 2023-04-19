@@ -7,23 +7,9 @@ require("nvim_config.nvim_tree")
 require("nvim_config.cmp")
 require("nvim_config.formatting")
 require("nvim_config.snippet")
-
--- Linting autocmd
-require("lint").linters_by_ft = {
-    python = {"pylint", "codespell" },
-    cpp = {"codespell"},
-    tex = {"chktex", "codespell"},
---    cmake = {"cmakelint", },
-    lua = {"luacheck", "codespell", },
-}
+require("nvim_config.lint")
 
 -- vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  callback = function()
-    require("lint").try_lint()
-  end,
-})
-
 -- Autocmd to close quickfix upon selecting an item
 --local autocmd = vim.api.nvim_create_autocmd
 --autocmd({ "BufLeave" }, { pattern = { "*" }, command = "if &buftype == 'quickfix'|q|endif" })

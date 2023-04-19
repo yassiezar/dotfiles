@@ -2,6 +2,7 @@ zoxide init fish | source
 
 set -gx EDITOR nvim
 set -gx VISUAL nvim
+set -gx PATH /home/jlock/.local/bin $PATH
 
 # Generated for envman. Do not edit.
 test -s "$HOME/.config/envman/load.fish"; and source "$HOME/.config/envman/load.fish"
