@@ -82,14 +82,17 @@ ls.setup({
 -- --     t(split_path(vim.api.nvim_buf_get_name(0)), '/'),
 --   })
 -- })
+ls.add_snippets('cpp', {})
 ls.add_snippets('c', {})
 ls.add_snippets('py', {})
 ls.add_snippets('shell', {})
+ls.add_snippets('rust', {})
 
 ls.filetype_extend('cpp', {'cpp'})
 ls.filetype_extend('c', {'cpp'})
 ls.filetype_extend('py', {'python'})
 ls.filetype_extend('shell', {'sh', 'bash'})
+ls.filetype_extend('rust', {'rs'})
 
 -- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } }) 
 require("luasnip.loaders.from_vscode").lazy_load() 

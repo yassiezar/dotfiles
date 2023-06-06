@@ -77,4 +77,7 @@ return require("packer").startup(function()
 
     -- Formatting
     use('mhartington/formatter.nvim')
+
+    -- Rust
+    use 'simrat39/rust-tools.nvim'
 end)
