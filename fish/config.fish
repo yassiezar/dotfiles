@@ -1,8 +1,16 @@
+# Load Mathworks environment config
+bass source /mathworks/hub/share/sbtools/bash_setup.bash
+
 zoxide init fish | source
+
+# Set Mathworks perforce editor to NVim
+set -gx P4EDITOR nvim
 
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx PATH /home/jlock/.local/bin $PATH
+set -gx PATH /home/jlock/.cargo/bin $PATH
+set -gx SBTOOLS_VNC_WINDOW_MGR cinnamon-session
 
 # Generated for envman. Do not edit.
 test -s "$HOME/.config/envman/load.fish"; and source "$HOME/.config/envman/load.fish"

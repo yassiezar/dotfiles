@@ -21,22 +21,27 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'vca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, bufopts)
+
+  require('completion').on_attach(client)
 end
 
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
+
 }
 
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
+--
+-- tex setup
 require'lspconfig'.texlab.setup{
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 }
 
+-- C++ setup
 require'lspconfig'.clangd.setup{
   on_attach = on_attach,
   flags = lsp_flags,
@@ -51,6 +56,7 @@ require'lspconfig'.clangd.setup{
     },
 }
 
+-- Python setup
 require'lspconfig'.pylsp.setup {
   on_attach = on_attach,
   flags = lsp_flags,
@@ -101,6 +107,32 @@ require'lspconfig'.pylsp.setup {
     }
   }
 }
+
+-- Rust setup
+local opts = {
+  tools = {
+    runnables = {
+      use_telescope = true,
+    },
+    inlay_hints = {
+      auto = true,
+      show_parameter_hints = false,
+      parameter_hints_prefix = "",
+      other_hints_prefix = "",
+    },
+  },
+  server = {
+    on_attach = on_attach,
+    settings = {
+      ['rust-analyzer'] = {
+        diagnostics = {
+          enable = true;
+        }
+      }
+    }
+  }
+}
+require('rust-tools').setup(opts)
 
 -- require('lspconfig').pyright.setup{
 --   on_attach = on_attach,

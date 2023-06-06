@@ -9,6 +9,9 @@ require("nvim_config.formatting")
 require("nvim_config.snippet")
 require("nvim_config.lint")
 
+-- Load if on a Mathworks machine
+require("nvim_config.mathworks")
+
 -- vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 -- Autocmd to close quickfix upon selecting an item
 --local autocmd = vim.api.nvim_create_autocmd
