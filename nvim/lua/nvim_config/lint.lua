@@ -3,7 +3,7 @@ require("lint").linters_by_ft = {
     python = {"pylint", "codespell" },
     cpp = {"codespell", "cpplint"},
     tex = {"chktex", "codespell"},
---    cmake = {"cmakelint", },
+    cmake = {"cmakelint", },
     lua = {"luacheck", "codespell", },
     matlab = {"local_mlint", "codespell"},
 }
