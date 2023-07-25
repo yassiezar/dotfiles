@@ -5,10 +5,10 @@ lsp.preset('recommended')
 lsp.ensure_installed({
   'rust_analyzer',
   'clangd',
-  -- TODO: Add matpab lsp
   'pylsp',
   'texlab',
   'lua_ls',
+  'matlab_ls',
 })
 
 lsp.configure('lua_ls', {
@@ -20,6 +20,21 @@ lsp.configure('lua_ls', {
       }
     }
   }
+})
+
+require('lspconfig').matlab_ls.setup({
+  -- cmd = { '/home/jlock/lsp_matlab' },
+  settings = {
+    matlab = {
+      -- installPath = '/local-ssd/jlock/bautosar.latest_pass/matlab'
+      installPath = '/home/jlock/MATLAB23b/'
+    },
+  },
+  root_dir = function(fname)
+    local util = require('lspconfig.util')
+    return util.root_pattern(unpack({ 'mw_anchor' }))(fname) or util.find_git_ancestor(fname)
+  end,
+  single_file_support = true,
 })
 
 local cmp = require('cmp')
