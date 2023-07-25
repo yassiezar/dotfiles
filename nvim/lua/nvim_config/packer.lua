@@ -55,9 +55,12 @@ return require("packer").startup(function()
       'VonHeikemen/lsp-zero.nvim',
       -- Code completion and LSP setup
       requires = {
-        {'neovim/nvim-lspconfig'},
-        {'williamboman/mason.nvim'},
+        {
+          'williamboman/mason.nvim',
+          run = ":MasonUpdate"
+        },
         {'williamboman/mason-lspconfig.nvim'},
+        {'neovim/nvim-lspconfig'},
         {'hrsh7th/cmp-nvim-lsp'},
         {'hrsh7th/cmp-nvim-lua'},
         {'hrsh7th/nvim-cmp'},
@@ -67,7 +70,6 @@ return require("packer").startup(function()
         {'hrsh7th/cmp-nvim-lsp-signature-help'},
       }
     }
-
 
     -- Snippets
     use('L3MON4D3/LuaSnip')
