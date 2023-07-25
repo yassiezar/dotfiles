@@ -11,7 +11,7 @@ lsp.ensure_installed({
   'matlab_ls',
 })
 
-lsp.configure('lua_ls', {
+require('lspconfig').lua_ls.setup({
   settings = {
     Lua = {
       diagnostics = {
@@ -38,6 +38,7 @@ require('lspconfig').matlab_ls.setup({
 })
 
 local cmp = require('cmp')
+local cmp_action = lsp.cmp_action()
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -49,29 +50,18 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<Down>'] = cmp.mapping.select_next_item(cmp_select),
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  -- ['<Tab>'] = cmp.mapping(function(fallback)
-  --     local col = vim.fn.col('.') - 1
-  --     if require'neogen'.jumpable() then
-  --       require'neogen'.jump_next()
-  --     elseif cmp.visible() then
-  --       cmp.select_next_item(cmp_select)
-  --     elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-  --       fallback()
-  --     else
-  --       cmp.complete()
-  --     end
-  --   end, {'i', 's'}),
-  -- ['<S-Tab>'] = cmp.mapping(function(fallback)
-  --   if cmp.visible() then
-  --     cmp.select_prev_item(cmp_select)
-  --   else
-  --     fallback()
-  --   end
-  -- end, {'i', 's'}),
+  ['<Tab>'] = cmp_action.tab_complete(),
+  ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
 })
 
+local cmp_windows = {
+  completion = cmp.config.window.bordered(),
+  documentation = cmp.config.window.bordered(),
+}
+
 lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+  mapping = cmp_mappings,
+  window = cmp_windows,
 })
 
 lsp.set_preferences({
@@ -104,5 +94,5 @@ require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 lsp.setup()
 
 vim.diagnostic.config({
-    virtual_text = true
+  virtual_text = true
 })
