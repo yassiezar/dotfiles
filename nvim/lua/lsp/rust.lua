@@ -8,9 +8,9 @@ local opts = {
     },
     inlay_hints = {
       auto = true,
-      show_parameter_hints = false,
-      parameter_hints_prefix = "",
-      other_hints_prefix = "",
+      show_parameter_hints = true,
+      parameter_hints_prefix = "<-",
+      other_hints_prefix = "=>",
     },
   },
   server = {
