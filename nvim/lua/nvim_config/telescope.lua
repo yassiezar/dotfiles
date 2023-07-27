@@ -12,8 +12,6 @@ require('telescope').setup {
 
 -- Enable fzf fuzzy search sorter
 require('telescope').load_extension('fzf')
--- Enable frecency search
-require('telescope').load_extension('frecency')
 
 vim.api.nvim_set_keymap('n', '<leader>fc', '<cmd>lua require("telescope").extensions.frecency.frecency()<cr>', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', { noremap = true, silent = true})
