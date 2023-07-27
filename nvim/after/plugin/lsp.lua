@@ -23,10 +23,8 @@ require('lspconfig').lua_ls.setup({
 })
 
 require('lspconfig').matlab_ls.setup({
-  -- cmd = { '/home/jlock/lsp_matlab' },
   settings = {
     matlab = {
-      -- installPath = '/local-ssd/jlock/bautosar.latest_pass/matlab'
       installPath = '/home/jlock/MATLAB23b/'
     },
   },

@@ -1,5 +1,0 @@
--- require("lsp.cpp")
--- require("lsp.python")
--- require("lsp.tex")
--- require("lsp.rust")
--- require("lsp.lsp_mathworks")

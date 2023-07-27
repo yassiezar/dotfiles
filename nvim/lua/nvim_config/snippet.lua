@@ -1,39 +1,6 @@
 local ls = require('luasnip')
 local types = require('luasnip.util.types')
 
-local s = ls.snippet
-local sn = ls.snippet_node
-local t = ls.text_node
-local i = ls.insert_node
-local f = ls.function_node
-local c = ls.choice_node
-local d = ls.dynamic_node
-local r = ls.restore_node
-
-local function split_path(path, sep)
-  --local t = {}
-  --for str in string.gmatch(path, "([^"..sep.."]+)") do
-  --  table.insert(t, str)
-  --end
-  --return t
--- local result = {}
--- local regex = ("([^%s]+)"):format(sep)
--- for each in path:gmatch(regex) do
---    table.insert(result, each)
--- end
--- return result
-  result = {};
-  for match in (path..sep):gmatch("(.-)"..sep) do
-      table.insert(result, match);
-  end
-  return result;
-end
-
-local function get_filename(path, sep)
-  local split_path = split_path(path, sep)
-  return split_path[#split_path+1]
-end
-
 ls.setup({
 	history = true,
 	-- Update more often, :h events for more info.
@@ -69,19 +36,6 @@ ls.setup({
 	end,
 })
 
--- ls.add_snippets('cpp', {
---   s("/**", {
---     t({"/**", ""}),
---     t({"* @file ", ""}),  
---     t({"* @author Jacobus Lock <jacobus.lock@fox-robotics.com>", ""}),  
---     t({"* @brief ", ""}),  
---     t({"* @date ", ""}),  
---     t({"*", ""}),  
---     t({"* @copyright Fox Robotics Ltd., 2022", ""}),  
---     t({"*/", ""}),  
--- --     t(split_path(vim.api.nvim_buf_get_name(0)), '/'),
---   })
--- })
 ls.add_snippets('cpp', {})
 ls.add_snippets('c', {})
 ls.add_snippets('py', {})
@@ -94,5 +48,4 @@ ls.filetype_extend('py', {'python'})
 ls.filetype_extend('shell', {'sh', 'bash'})
 ls.filetype_extend('rust', {'rs'})
 
--- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } }) 
-require("luasnip.loaders.from_vscode").lazy_load() 
+require("luasnip.loaders.from_vscode").lazy_load()
