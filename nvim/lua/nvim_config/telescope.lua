@@ -13,7 +13,7 @@ require('telescope').setup {
 -- Enable fzf fuzzy search sorter
 require('telescope').load_extension('fzf')
 -- Enable frecency search
-require('telescope').load_extension('frecency')
+-- require('telescope').load_extension('frecency')
 -- Needs colcon (ROS2)
 require('telescope').load_extension('ros')
 
