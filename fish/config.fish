@@ -8,16 +8,17 @@ if test -e /local-ssd
   set -gx PATH /home/jlock/.cargo/bin $PATH
 end
 
-zoxide init fish | source
+# ROS2
+if test -e ~/ros_workspaces
+  bass source ~/ros_workspaces/ros2_humble/install/local_setup.bash
+  register-python-argcomplete --shell fish ros2 | source
+end
 
-# Set Mathworks perforce editor to NVim
-set -gx P4EDITOR nvim
+# Enable the z command
+zoxide init fish | source
 
 set -gx EDITOR nvim
 set -gx VISUAL nvim
-set -gx PATH /home/jlock/.local/bin $PATH
-set -gx PATH /home/jlock/.cargo/bin $PATH
-set -gx SBTOOLS_VNC_WINDOW_MGR cinnamon-session
 
 # Generated for envman. Do not edit.
 test -s "$HOME/.config/envman/load.fish"; and source "$HOME/.config/envman/load.fish"
@@ -54,7 +55,7 @@ set -g theme_date_format "+%a %H:%M"
 set -g theme_date_timezone America/Los_Angeles
 set -g theme_avoid_ambiguous_glyphs yes
 #set -g theme_powerline_fonts no
-#set -g theme_nerd_fonts yes
+set -g theme_nerd_fonts yes
 set -g theme_show_exit_status yes
 set -g theme_display_jobs_verbose yes
 set -g default_user your_normal_user
