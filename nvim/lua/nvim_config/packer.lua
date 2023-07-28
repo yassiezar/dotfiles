@@ -13,6 +13,7 @@ return require("packer").startup(function()
     use 'mfussenegger/nvim-lint'
 
     -- ASync setup
+    -- TODO: Move to under telescope
     use("nvim-lua/plenary.nvim")
 
     -- Devicons
@@ -21,14 +22,10 @@ return require("packer").startup(function()
 
     -- Telescope for file preview
     use("nvim-telescope/telescope.nvim")
-    -- use {
-    --   "nvim-telescope/telescope-frecency.nvim",
-    --   config = function()
-    --     require"telescope".load_extension("frecency")
-    --   end,
-    --   requires = {"kkharji/sqlite.lua"}
-    -- }
-    use('bi0ha2ard/telescope-ros.nvim') -- needs colcon (ROS2)
+    use {
+      "nvim-telescope/telescope-frecency.nvim",
+      requires = {"tami5/sqlite.lua"}
+    }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- Statusline
@@ -54,15 +51,25 @@ return require("packer").startup(function()
     -- Element highlighting
     use("yamatsum/nvim-cursorline")
 
-    -- Code completion setup
-    use('neovim/nvim-lspconfig')
-    use('hrsh7th/cmp-nvim-lsp')
-    use('hrsh7th/cmp-nvim-lua')
-    use('hrsh7th/nvim-cmp')
-    use('hrsh7th/cmp-buffer')
-    use('hrsh7th/cmp-path')
-    use('hrsh7th/cmp-cmdline')
-    use('hrsh7th/cmp-nvim-lsp-signature-help')
+    use {
+      'VonHeikemen/lsp-zero.nvim',
+      -- Code completion and LSP setup
+      requires = {
+        {
+          'williamboman/mason.nvim',
+          run = ":MasonUpdate"
+        },
+        {'williamboman/mason-lspconfig.nvim'},
+        {'neovim/nvim-lspconfig'},
+        {'hrsh7th/cmp-nvim-lsp'},
+        {'hrsh7th/cmp-nvim-lua'},
+        {'hrsh7th/nvim-cmp'},
+        {'hrsh7th/cmp-buffer'},
+        {'hrsh7th/cmp-path'},
+        {'hrsh7th/cmp-cmdline'},
+        {'hrsh7th/cmp-nvim-lsp-signature-help'},
+      }
+    }
 
     -- Snippets
     use('L3MON4D3/LuaSnip')
@@ -82,7 +89,4 @@ return require("packer").startup(function()
 
     -- Formatting
     use('mhartington/formatter.nvim')
-
-    -- Rust
-    use 'simrat39/rust-tools.nvim'
 end)
