@@ -5,6 +5,7 @@ lsp.preset('recommended')
 lsp.ensure_installed({
   'rust_analyzer',
   'clangd',
+  -- remember to install the MyPy plugin
   'pylsp',
   'texlab',
   'lua_ls',

@@ -1,10 +1,10 @@
 -- Linting autocmd
 require("lint").linters_by_ft = {
-    python = {"pylint", "codespell" },
+    python = {"pylint", "codespell"},
     cpp = {"codespell", "cpplint"},
     tex = {"chktex", "codespell"},
-    cmake = {"cmakelint", },
-    lua = {"luacheck", "codespell", },
+    cmake = {"cmakelint"},
+    lua = {"luacheck", "codespell"},
     matlab = {"local_mlint", "codespell"},
 }
 
