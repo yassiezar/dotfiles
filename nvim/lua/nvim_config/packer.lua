@@ -77,16 +77,27 @@ return require("packer").startup(function()
     use('saadparwaiz1/cmp_luasnip')
 
     -- Annotation (docstrings)
-    use{
-      'danymat/neogen',
-      config = function()
-        require('neogen').setup { 
-          snippet_engine = 'luasnip'
-        }
-      end,
-      requires = 'nvim-treesitter/nvim-treesitter',
-    }
+    -- use{
+    --   'danymat/neogen',
+    --   config = function()
+    --     require('neogen').setup { 
+    --       snippet_engine = 'luasnip'
+    --     }
+    --   end,
+    --   requires = 'nvim-treesitter/nvim-treesitter',
+    -- }
 
     -- Formatting
     use('mhartington/formatter.nvim')
+
+    -- Version control integration
+    use('ngemily/vim-vp4')
+
+    -- Commenting support
+    use {
+      'numToStr/Comment.nvim',
+      config = function()
+        require('Comment').setup()
+      end
+    }
 end)
