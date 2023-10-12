@@ -1,76 +1,55 @@
 local lsp = require('lsp-zero')
 
-lsp.preset('recommended')
+-- Fix 'Undefined global vim' warning
+lsp.nvim_workspace()
 
-lsp.ensure_installed({
-  'rust_analyzer',
-  'clangd',
-  -- remember to install the MyPy plugin
-  'pylsp',
-  'texlab',
-  'lua_ls',
-  'matlab_ls',
-})
-
-require('lspconfig').lua_ls.setup({
-  settings = {
-    Lua = {
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { 'vim' }
-      }
-    }
-  }
-})
-
-require('lspconfig').matlab_ls.setup({
-  settings = {
-    matlab = {
-      installPath = '/home/jlock/MATLAB23b/'
-    },
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'rust_analyzer',
+    'clangd',
+    -- remember to install the MyPy plugin
+    'pylsp',
+    'texlab',
+    'lua_ls',
+    'matlab_ls',
   },
-  root_dir = function(fname)
-    local util = require('lspconfig.util')
-    return util.root_pattern(unpack({ 'mw_anchor' }))(fname) or util.find_git_ancestor(fname)
-  end,
-  single_file_support = true,
+  handlers = {
+    lsp.default_setup,
+    matlab_ls = function()
+      require('lspconfig').matlab_ls.setup({
+        settings = {
+          matlab = {
+            installPath = '/home/jlock/MATLAB23b/'
+          },
+        },
+        root_dir = function(fname)
+          local util = require('lspconfig.util')
+          return util.root_pattern(unpack({ 'mw_anchor' }))(fname) or util.find_git_ancestor(fname)
+        end,
+        single_file_support = true,
+      })
+    end,
+    lua_ls = function()
+      require('lspconfig').lua_ls.setup({
+        settings = {
+          Lua = {
+            diagnostics = {
+              -- Get the language server to recognize the `vim` global
+              globals = { 'vim' }
+            }
+          }
+        }
+      })
+    end,
+  },
 })
 
-local cmp = require('cmp')
-local cmp_action = lsp.cmp_action()
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-  ['<C-f>'] = cmp.mapping.scroll_docs(4),
-  ['<C-Space>'] = cmp.mapping.complete(),
-  ['<C-e>'] = cmp.mapping.abort(),
-  ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-  ['<Up>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<Down>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<Tab>'] = cmp_action.tab_complete(),
-  ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
-})
-
-local cmp_windows = {
-  completion = cmp.config.window.bordered(),
-  documentation = cmp.config.window.bordered(),
-}
-
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings,
-  window = cmp_windows,
-})
-
-lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
+lsp.set_sign_icons({
+  error = 'E',
+  warn = 'W',
+  hint = 'H',
+  info = 'I'
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -87,10 +66,6 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, bufopts)
 end)
-
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-
-lsp.setup()
 
 vim.diagnostic.config({
   virtual_text = true
