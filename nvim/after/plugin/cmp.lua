@@ -28,6 +28,7 @@ cmp.setup({
     { name = 'nvim_lsp_signature_help' },
   }, {
     { name = 'buffer' },
+    { name = 'codeium' },
   }),
   snippet = {
     expand = function(args)
