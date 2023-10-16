@@ -2,7 +2,6 @@ local cmp = require('cmp')
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_action = require('lsp-zero').cmp_action()
-local cmp_format = require('lsp-zero').cmp_format()
 
 cmp.setup({
   window = {
@@ -28,6 +27,7 @@ cmp.setup({
     { name = 'nvim_lsp_signature_help' },
   }, {
     { name = 'buffer' },
+    { name = 'path' },
     { name = 'codeium' },
   }),
   snippet = {
@@ -35,7 +35,32 @@ cmp.setup({
       require('luasnip').lsp_expand(args.body)
     end,
   },
-  formatting = cmp_format,
+  -- formatting = require('lsp-zero').cmp_format(),
+  formatting = {
+    format = require('lspkind').cmp_format({
+      fields = {'kind', 'abbr', 'menu'},
+      mode = "symbol_text",
+      maxwidth = 50,
+      ellipsis_char = '...',
+      symbol_map = { Codeium = "", },
+      menu = ({
+        buffer = "[Buffer]",
+        path = "[Path]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[Snippet]",
+        nvim_lua = "[Lua]",
+        codeium = "[AI]",
+      })
+    })
+  },
+  -- flip menu upside down when cursor at bottof screen
+  view = {
+    entries = {name = 'custom', selection_order = 'near_cursor' }
+  },
+  experimental = {
+    -- Add ghost text
+    ghost_text = true,
+  }
 })
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
