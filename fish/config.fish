@@ -6,6 +6,10 @@ if test -e /local-ssd
   set -gx SBTOOLS_VNC_WINDOW_MGR cinnamon-session
   set -gx PATH /home/jlock/.local/bin $PATH
   set -gx PATH /home/jlock/.cargo/bin $PATH
+
+  # Add Mathworks Node to path
+  set nodePath (dirname (mw -using Bautosar shell whereis npm | awk '{print $4}'))
+  set -gx PATH $nodePath $PATH
 end
 
 # ROS2
