@@ -1,8 +1,5 @@
 local lsp = require('lsp-zero')
 
--- Fix 'Undefined global vim' warning
-lsp.nvim_workspace()
-
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
