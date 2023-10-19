@@ -15,9 +15,11 @@ require('mason-lspconfig').setup({
     lsp.default_setup,
     matlab_ls = function()
       require('lspconfig').matlab_ls.setup({
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        -- cmd = {'/home/jlock/lsp_matlab'},
         settings = {
           matlab = {
-            installPath = '/home/jlock/MATLAB23b/'
+            installPath = '/opt/MATLAB/R2023b'
           },
         },
         root_dir = function(fname)
