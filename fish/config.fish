@@ -1,5 +1,5 @@
 # Load Mathworks environment config
-if test -e /local-ssd
+if test -e /local-ssd; and status --is-interactive
   bass source /mathworks/hub/share/sbtools/bash_setup.bash
   # Set Mathworks perforce editor to NVim
   set -gx P4EDITOR nvim
@@ -8,9 +8,15 @@ if test -e /local-ssd
   set -gx PATH /home/jlock/.cargo/bin $PATH
 
   # Add Mathworks Node to path
-  set nodePath (dirname (mw -using Bautosar shell whereis npm | awk '{print $4}'))
+  set nodePath (dirname (mw -using Bautosar shell whereis npm | awk '{print $2}'))
   set -gx PATH $nodePath $PATH
+
+  # Configure fzf for Mathworks
+  set -gx FZF_DEFAULT_COMMAND "fd --type file"
+  set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 end
+
+fzf_configure_bindings --directory=\cf
 
 # ROS2
 if test -e ~/ros_workspaces
@@ -74,3 +80,4 @@ if status is-interactive
 and not set -q TMUX
     exec tmux
 end
+
