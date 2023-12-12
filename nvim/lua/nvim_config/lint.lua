@@ -6,6 +6,7 @@ require("lint").linters_by_ft = {
     cmake = {"cmakelint"},
     lua = {"luacheck", "codespell"},
     matlab = {"local_mlint", "codespell"},
+    json = {"jsonlint", "codespell"},
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {

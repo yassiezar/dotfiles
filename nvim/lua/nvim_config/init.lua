@@ -42,6 +42,11 @@ vim.api.nvim_set_keymap('v', '<A-j>', ":m '>+1<cr>gv=gv", opts)
 vim.api.nvim_set_keymap('v', '<A-k>', ":m '<-2<cr>gv=gv", opts)
 vim.api.nvim_set_keymap('n',  '<leader>doc', '<cmd>lua require("neogen").generate()<cr>', opts)
 
+-- Copy and paste
 vim.api.nvim_set_keymap('n', "<leader>y", [["+y]], opts)
 vim.api.nvim_set_keymap('v', "<leader>y", [["+y]], opts)
 vim.api.nvim_set_keymap('n', "<leader>Y", [["+Y]], opts)
+
+vim.api.nvim_set_keymap('n', "<leader>p", [["+p]], opts)
+vim.api.nvim_set_keymap('v', "<leader>p", [["+p]], opts)
+vim.api.nvim_set_keymap('n', "<leader>P", [["+P]], opts)
