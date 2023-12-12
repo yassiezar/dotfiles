@@ -18,3 +18,4 @@ vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require("telescope.builtin"
 vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>fo', '<cmd>lua require("telescope.builtin").oldfiles()<cr>', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>fs', '<cmd>lua require("sg.extensions.telescope").fuzzy_search_results()<cr>', {noremap = true, silent = true})

@@ -8,7 +8,9 @@ if test -e /local-ssd; and status --is-interactive
   set -gx PATH /home/jlock/.cargo/bin $PATH
 
   # Add Mathworks Node to path
-  set nodePath (dirname (mw -using Bautosar shell whereis npm | awk '{print $2}'))
+  # set nodePath (dirname (mw -using Bautosar shell whereis npm | awk '{print $2}'))
+  # Temporary mearue until Bmain has Node v18 installed
+  set nodePath /mathworks/hub/3rdparty/R2024a/10567361/glnxa64/Node.js/bin
   set -gx PATH $nodePath $PATH
 
   # Configure fzf for Mathworks

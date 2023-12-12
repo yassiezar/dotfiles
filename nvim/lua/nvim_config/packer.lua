@@ -1,7 +1,7 @@
 return require("packer").startup(function()
     --- Package manager
     use("wbthomason/packer.nvim")
-    
+
     --- Colour scheme stuff
     use("morhetz/gruvbox")
     use { "catppuccin/nvim", 
@@ -112,4 +112,6 @@ return require("packer").startup(function()
             })
         end
     }
+
+    use { 'sourcegraph/sg.nvim', run = 'nvim -l build/init.lua' }
 end)

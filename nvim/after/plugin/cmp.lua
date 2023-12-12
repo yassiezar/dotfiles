@@ -29,6 +29,7 @@ cmp.setup({
     { name = 'buffer' },
     { name = 'path' },
     { name = 'codeium' },
+    { name = 'cody' },
   }),
   snippet = {
     expand = function(args)
