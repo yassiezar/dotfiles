@@ -1,23 +1,3 @@
-# Load Mathworks environment config
-if test -e /local-ssd; and status --is-interactive
-  bass source /mathworks/hub/share/sbtools/bash_setup.bash
-  # Set Mathworks perforce editor to NVim
-  set -gx P4EDITOR nvim
-  set -gx SBTOOLS_VNC_WINDOW_MGR cinnamon-session
-  set -gx PATH /home/jlock/.local/bin $PATH
-  set -gx PATH /home/jlock/.cargo/bin $PATH
-
-  # Add Mathworks Node to path
-  # set nodePath (dirname (mw -using Bautosar shell whereis npm | awk '{print $2}'))
-  # Temporary mearue until Bmain has Node v18 installed
-  set nodePath /mathworks/hub/3rdparty/R2024a/10567361/glnxa64/Node.js/bin
-  set -gx PATH $nodePath $PATH
-
-  # Configure fzf for Mathworks
-  set -gx FZF_DEFAULT_COMMAND "fd --type file"
-  set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
-end
-
 fzf_configure_bindings --directory=\cf
 
 # ROS2
