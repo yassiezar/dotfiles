@@ -1,4 +1,5 @@
 local lsp = require('lsp-zero')
+vim.lsp.set_log_level('debug')
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
@@ -41,6 +42,9 @@ require('mason-lspconfig').setup({
         }
       })
     end,
+    pylsp = function()
+      require('lspconfig').pylsp.setup({})
+    end
   },
 })
 
