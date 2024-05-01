@@ -1,2 +1,4 @@
-require("sg").setup {
+local sg = require('sg')
+
+sg.setup {
 }

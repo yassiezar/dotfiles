@@ -24,12 +24,12 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'cody' },
     { name = 'nvim_lsp_signature_help' },
   }, {
     { name = 'buffer' },
     { name = 'path' },
     { name = 'codeium' },
-    { name = 'cody' },
   }),
   snippet = {
     expand = function(args)
@@ -51,6 +51,7 @@ cmp.setup({
         luasnip = "[Snippet]",
         nvim_lua = "[Lua]",
         codeium = "[AI]",
+        cody = "[AI]",
       })
     })
   },
