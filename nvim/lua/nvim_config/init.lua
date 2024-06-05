@@ -7,7 +7,7 @@ require("nvim_config.nvim_tree")
 require("nvim_config.formatting")
 require("nvim_config.snippet")
 require("nvim_config.lint")
-require("nvim_config.ai")
+--require("nvim_config.ai")
 
 -- Load if on a Mathworks machine
 require("nvim_config.mathworks")
