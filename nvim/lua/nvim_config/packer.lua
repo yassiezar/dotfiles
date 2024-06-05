@@ -40,6 +40,7 @@ return require("packer").startup(function()
       requires = {"tami5/sqlite.lua"}
     }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use {'nvim-telescope/telescope-dap.nvim' }
 
     -- Statusline
     use {
@@ -114,6 +115,14 @@ return require("packer").startup(function()
       end
     }
 
+    -- Debugging
+    use('mfussenegger/nvim-dap')
+    use('nvim-neotest/nvim-nio')
+    use{'rcarriga/nvim-dap-ui',
+        requires = 'nvim-neotest/nvim-nio'
+    }
+
+    -- AI
     use {
         "Exafunction/codeium.nvim",
         requires = {

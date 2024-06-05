@@ -30,8 +30,6 @@ require('nvim-cursorline').setup {
   }
 }
 
--- disable mouse
-
 local opts = { noremap = true, silent = true}
 vim.api.nvim_set_keymap('n', 'j', 'v:count == 0 ? "gj" : "j"', { noremap = true, silent = true, expr = true })
 vim.api.nvim_set_keymap('n', 'k', 'v:count == 0 ? "gk" : "k"', { noremap = true, silent = true, expr = true })
@@ -43,7 +41,7 @@ vim.api.nvim_set_keymap('v', '<A-j>', ":m '>+1<cr>gv=gv", opts)
 vim.api.nvim_set_keymap('v', '<A-k>', ":m '<-2<cr>gv=gv", opts)
 vim.api.nvim_set_keymap('n',  '<leader>doc', '<cmd>lua require("neogen").generate()<cr>', opts)
 
--- Copy and paste
+-- GLobal copy and paste
 vim.api.nvim_set_keymap('n', "<leader>y", [["+y]], opts)
 vim.api.nvim_set_keymap('v', "<leader>y", [["+y]], opts)
 vim.api.nvim_set_keymap('n', "<leader>Y", [["+Y]], opts)
