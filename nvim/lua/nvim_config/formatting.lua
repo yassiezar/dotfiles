@@ -5,8 +5,8 @@ formatter.setup({
     cpp = {
       function()
         return{
-          exe = "clang-format",
-          args = {"--assume-filename", vim.api.nvim_buf_get_name(0), "--style", "google"},
+          exe = "sb-clang-format",
+          -- args = {"--assume-filename", vim.api.nvim_buf_get_name(0), "--style", "google"},
           stdin = true,
           cwd = vim.fn.expand("%:p:h")
         }
