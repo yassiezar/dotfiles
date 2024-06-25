@@ -1,4 +1,2 @@
---local sg = require('sg')
---
---sg.setup {
---}
+require('sg').setup({})
+require("codeium").setup({})
