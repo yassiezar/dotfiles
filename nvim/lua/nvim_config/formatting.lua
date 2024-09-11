@@ -30,7 +30,14 @@ formatter.setup({
       end
     },
     json = {
-      require("formatter.filetypes.json").jq
+      function()
+        return {
+          exe = "jq",
+          args = { "--indent 4 ." },
+          stdin = true,
+        }
+      end
+      -- require("formatter.filetypes.json").jq
     }
   }
 })
@@ -40,5 +47,5 @@ vim.api.nvim_set_keymap('n', '<C-i>', "<cmd>Format<cr>", { noremap = true, silen
 -- Format on save
 vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = {"*.py"}, command = "FormatWriteLock" })
 vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = {"*.cpp"}, command = "FormatWriteLock" })
-vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = {"*.json"}, command = "FormatWriteLock" })
+-- vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = {"*.json"}, command = "FormatWriteLock" })
 vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = {"*.rs"}, command = "lua vim.lsp.buf.format()" })

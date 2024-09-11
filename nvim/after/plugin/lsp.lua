@@ -1,5 +1,4 @@
 local lsp = require('lsp-zero')
-vim.lsp.set_log_level('debug')
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
@@ -17,10 +16,9 @@ require('mason-lspconfig').setup({
     matlab_ls = function()
       require('lspconfig').matlab_ls.setup({
         capabilities = require('cmp_nvim_lsp').default_capabilities(),
-        -- cmd = {'/home/jlock/lsp_matlab'},
         settings = {
           matlab = {
-            installPath = '/opt/MATLAB/R2023b'
+            installPath = '/home/jlock/MATLAB/R2024a',
           },
         },
         root_dir = function(fname)

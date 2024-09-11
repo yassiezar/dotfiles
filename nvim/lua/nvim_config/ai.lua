@@ -1,2 +1,2 @@
 require('sg').setup({})
-require("codeium").setup({})
+-- require("codeium").setup({})

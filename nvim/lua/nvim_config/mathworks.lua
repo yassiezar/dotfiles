@@ -1,7 +1,3 @@
--- Perforce shortcuts
-local opts = { noremap = true, silent = true}
-vim.api.nvim_set_keymap('n', "<leader>pe", ":terminal p4 edit %:p", opts)
-
 -- Linting
 local pattern = "L (%d+) %(C (%d+)[-]?([%d]*)%): (.-): (.-): (.*)"
 local groups = { "lnum", "col", "end_col", "code", "severity", "message" }
@@ -22,3 +18,4 @@ require('lint').linters.local_mlint = {
   ignore_exitcode = true,
   parser = require("lint.parser").from_pattern(pattern, groups, severities, { ["source"] = "local_mlint" }),
 }
+

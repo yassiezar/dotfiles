@@ -17,7 +17,7 @@ return require("packer").startup(function()
 
     --- Colour scheme stuff
     use("morhetz/gruvbox")
-    use { "catppuccin/nvim", 
+    use { "catppuccin/nvim",
       as = "catppuccin",
       run = ":CatppuccinCompile"
     }
