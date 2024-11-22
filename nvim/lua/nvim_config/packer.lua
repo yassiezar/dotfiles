@@ -90,17 +90,6 @@ return require("packer").startup(function()
     use('rafamadriz/friendly-snippets')
     use('saadparwaiz1/cmp_luasnip')
 
-    -- Annotation (docstrings)
-    -- use{
-    --   'danymat/neogen',
-    --   config = function()
-    --     require('neogen').setup { 
-    --       snippet_engine = 'luasnip'
-    --     }
-    --   end,
-    --   requires = 'nvim-treesitter/nvim-treesitter',
-    -- }
-
     -- Formatting
     use('mhartington/formatter.nvim')
 
@@ -121,17 +110,6 @@ return require("packer").startup(function()
     use{'rcarriga/nvim-dap-ui',
         requires = 'nvim-neotest/nvim-nio'
     }
-
-    -- AI
-    use {
-        "Exafunction/codeium.nvim",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-        }
-    }
-
-    use { 'sourcegraph/sg.nvim', run = 'nvim -l build/init.lua' }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

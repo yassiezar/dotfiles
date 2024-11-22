@@ -60,7 +60,6 @@ cmp.setup({
       require('luasnip').lsp_expand(args.body)
     end,
   },
-  -- formatting = require('lsp-zero').cmp_format(),
   formatting = {
     format = require('lspkind').cmp_format({
       fields = {'kind', 'abbr', 'menu'},
@@ -108,11 +107,3 @@ cmp.setup.cmdline(':', {
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
--- require('lspconfig')['matlab_ls'].setup {
---   capabilities = capabilities
--- }
--- 
--- require('lspconfig')['clangd'].setup {
---   capabilities = capabilities
--- }
