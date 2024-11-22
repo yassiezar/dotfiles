@@ -9,25 +9,9 @@ require('mason-lspconfig').setup({
     'pylsp',
     'texlab',
     'lua_ls',
-    'matlab_ls',
   },
   handlers = {
     lsp.default_setup,
-    matlab_ls = function()
-      require('lspconfig').matlab_ls.setup({
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
-        settings = {
-          matlab = {
-            installPath = '/home/jlock/MATLAB/R2024a',
-          },
-        },
-        root_dir = function(fname)
-          local util = require('lspconfig.util')
-          return util.root_pattern(unpack({ 'mw_anchor' }))(fname) or util.find_git_ancestor(fname)
-        end,
-        single_file_support = true,
-      })
-    end,
     lua_ls = function()
       require('lspconfig').lua_ls.setup({
         settings = {
