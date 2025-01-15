@@ -9,6 +9,7 @@ require('mason-lspconfig').setup({
     'pylsp',
     'texlab',
     'lua_ls',
+    'gopls',
   },
   handlers = {
     lsp.default_setup,
