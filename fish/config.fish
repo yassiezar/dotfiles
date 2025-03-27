@@ -60,7 +60,7 @@ set -g theme_newline_prompt '$ '
 # Start a TMUX session
 if status is-interactive
 and not set -q TMUX
-    exec tmux
+# exec tmux
 end
 
 set -g TALOSCONFIG /home/jaycee/workspace/FruitCast/fc-talos/talosconfig
