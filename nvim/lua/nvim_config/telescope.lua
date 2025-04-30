@@ -1,4 +1,5 @@
-require('telescope').setup {
+local telescope = require('telescope')
+telescope.setup {
    extensions = {
     fzf = {
       fuzzy = true,                    -- false will only do exact matching
@@ -11,7 +12,8 @@ require('telescope').setup {
 }
 
 -- Enable fzf fuzzy search sorter
-require('telescope').load_extension('fzf')
+telescope.load_extension('fzf')
+telescope.load_extension('dap')
 
 vim.api.nvim_set_keymap('n', '<leader>fc', '<cmd>lua require("telescope").extensions.frecency.frecency()<cr>', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', { noremap = true, silent = true})
