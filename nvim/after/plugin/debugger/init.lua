@@ -72,46 +72,51 @@ end
 
 local nnoremap = bind("n")
 
-nnoremap("<F6>", function()
-    dap.run_to_cursor()
-  end,
-  opts
-)
-nnoremap("<F5>", function()
-    dap.continue()
-    dapui.open()
-  end,
-  opts
-)
-nnoremap("<C-F5>", function()
-    dap.terminate()
-    dapui.close()
-    dap.repl.close()
-  end,
-  opts
-)
-nnoremap("<F9>", function()
-    dap.toggle_breakpoint()
-  end,
-  opts
-)
-nnoremap("<F10>", function()
-    dap.step_over()
-  end,
-  opts
-)
-nnoremap("<F11>", function()
-    dap.step_into()
-  end,
-  opts
-)
-nnoremap("<F12>", function()
-    dap.step_out()
+nnoremap("<leader>d?", function()
+    telescope.extensions.dap.commands({})
   end,
   opts
 )
 nnoremap("<leader>dc", function()
-    telescope.extensions.dap.commands({})
+  dap.continue()
+  dapui.open()
+end,
+opts
+)
+nnoremap("<leader>dp", function()
+    dap.step_out()
+  end,
+  opts
+)
+nnoremap("<leader>dt", function()
+  dap.terminate()
+  dapui.close()
+  dap.repl.close()
+end,
+opts
+)
+nnoremap("<leader>dC", function()
+    dap.run_to_cursor()
+  end,
+  opts
+)
+nnoremap("<leader>db", function()
+    dap.toggle_breakpoint()
+  end,
+  opts
+)
+nnoremap("<leader>dO", function()
+    dap.step_over()
+  end,
+  opts
+)
+nnoremap("<leader>di", function()
+    dap.step_into()
+  end,
+  opts
+)
+nnoremap("<leader>do", function()
+    dap.step_out()
   end,
   opts
 )
