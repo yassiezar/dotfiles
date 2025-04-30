@@ -1,9 +1,34 @@
 require("dap-python").setup("python3")
 
-table.insert(require('dap').configurations.python, {
+local dap = require('dap')
+table.insert(dap.configurations.python, {
+    type = 'python',
+    request = 'launch',
+    name = 'Run program with args',
+    program = '${file}',
+    justMyCode = true,
+    args = function()
+      local input = vim.fn.input('Program args: ')
+      return vim.split(input, '%s+')
+    end,
+})
+table.insert(dap.configurations.python, {
   type = 'python',
   request = 'launch',
-  name = 'My custom launch configuration',
+  name = 'Run current script',
   program = '${file}',
-  -- ... more options, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
+  justMyCode = true,
+})
+table.insert(dap.configurations.python, {
+  type = 'python',
+  request = 'launch',
+  name = 'Run module with args',
+  module = function()
+    return vim.fn.input('Script entry point (module name): ')
+  end,
+  args = function()
+    local input = vim.fn.input('Program args: ')
+    return vim.split(input, '%s+')
+  end,
+  justMyCode = true,
 })
