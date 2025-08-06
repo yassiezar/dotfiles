@@ -120,3 +120,8 @@ nnoremap("<leader>do", function()
   end,
   opts
 )
+nnoremap("<leader>dr", function()
+    dap.restart()
+  end,
+  opts
+)

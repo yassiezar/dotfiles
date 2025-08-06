@@ -17,7 +17,11 @@ formatter.setup({
         local util = require "formatter.util"
         return{
           exe = "black",
-          args = {"-q", "--stdin-filename", util.escape_path(util.get_current_buffer_file_name()), "-"},
+          args = {
+            "-q",
+            "--stdin-filename", util.escape_path(util.get_current_buffer_file_name()),
+            "-"
+          },
           stdin = true,
         }
       end
