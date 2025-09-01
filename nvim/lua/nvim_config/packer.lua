@@ -113,6 +113,12 @@ return require("packer").startup(function()
     use('mfussenegger/nvim-dap-python')
     use('leoluz/nvim-dap-go')
 
+    use(
+      {'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function()
+          require('nerdicons').setup({}) end
+      }
+    )
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then

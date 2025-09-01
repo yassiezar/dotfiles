@@ -27,7 +27,18 @@ require('mason-lspconfig').setup({
     end,
     pylsp = function()
       require('lspconfig').pylsp.setup({})
-    end
+    end,
+    clangd = function()
+      require('lspconfig').clangd.setup({
+        cmd = {
+        "clangd",
+          "--background-index",
+          "--suggest-missing-includes",
+          "--completion-style=bundled",
+          "--header-insertion=iwyu"
+        },
+      })
+    end,
   },
 })
 
