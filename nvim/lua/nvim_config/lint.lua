@@ -7,6 +7,8 @@ require("lint").linters_by_ft = {
     lua = {"luacheck", "codespell"},
     matlab = {"local_mlint", "codespell"},
     json = {"jsonlint", "codespell"},
+    bash = {"shellcheck", "codespell"},
+    sh = {"shellcheck", "codespell"},
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
