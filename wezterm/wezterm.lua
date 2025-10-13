@@ -49,16 +49,47 @@ local sessionizer_schema = {
   history.MostRecentWorkspace {},
   sessionizer.DefaultWorkspace {},
   sessionizer.AllActiveWorkspaces {},
-  sessionizer.FdSearch "~/projects", -- Searches for git repos in ~/projects
+  sessionizer.FdSearch "/home/jaycee/workspaces", -- Searches for git repos in ~/projects
   zoxide.Zoxide {}
 }
--- Add sessionoizer shortcuts to keymap
+-- Add sessionizer shortcuts to keymap
 table.insert(config.keys,
   {
     -- List current sessions in sessionizer
     key = 's',
     mods = 'LEADER',
     action = sessionizer.show(sessionizer_schema),
+  }
+)
+
+-- Add domains config
+domains.apply_to_config(
+  config, {
+    keys = {
+      attach = {
+        key  = 'd',
+        mods = 'LEADER',
+        tbl  = ''
+      },
+      vsplit = {
+        key  = 'v',
+        mods = 'ALT|CTRL',
+        tbl  = ''
+      },
+      hsplit = {
+        key  = 'h',
+        mods = 'ALT|CTRL',
+        tbl  = ''
+      },
+    },
+    auto = {
+      ssh_ignore = false,
+      exec_ignore = {
+        ssh = false,
+        docker = false,
+        kubernetes = false
+      },
+    }
   }
 )
 
