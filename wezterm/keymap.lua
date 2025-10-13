@@ -103,7 +103,7 @@ function module.get_keymap()
 
     -- Detach from muxer
     {
-      key = 'd',
+      key = 'u',
       mods = 'LEADER',
       action = wezterm.action.DetachDomain { DomainName = 'unix' },
     },
