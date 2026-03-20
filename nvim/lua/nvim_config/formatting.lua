@@ -1,4 +1,6 @@
 local formatter = require('formatter')
+local utils = require('formatter.util')
+
 formatter.setup({
   logging = true,
   filetype = {
@@ -69,6 +71,15 @@ formatter.setup({
           args = { "-in" },
           stdin = true,
         }
+      end,
+    },
+    html = {
+      function()
+        return {
+          exe = "pnpm prettier",
+          args = { "--stdin-filepath", utils.get_current_buffer_file_name()},
+          stdin = true,
+        }
       end
     }
   }
@@ -80,6 +91,7 @@ vim.api.nvim_set_keymap('n', '<C-i>', "<cmd>Format<cr>", { noremap = true, silen
 vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = {"*.py"}, command = "FormatWriteLock" })
 vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = {"*.go"}, command = "FormatWriteLock" })
 vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = {"*.cpp"}, command = "FormatWriteLock" })
+vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = {"*.html"}, command = "FormatWriteLock" })
 -- vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = {"*.yaml", "*.yml"}, command = "FormatWriteLock" })
 -- vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = {"*.json"}, command = "FormatWriteLock" })
 vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = {"*.rs"}, command = "lua vim.lsp.buf.format()" })
