@@ -5,11 +5,11 @@ require('mason-lspconfig').setup({
   ensure_installed = {
     'rust_analyzer',
     'clangd',
-    -- remember to install the MyPy plugin
-    'pylsp',
     'texlab',
     'lua_ls',
     'gopls',
+    'ruff',
+    'pyright',
   },
   handlers = {
     lsp.default_setup,
@@ -25,17 +25,46 @@ require('mason-lspconfig').setup({
         }
       })
     end,
-    pylsp = function()
-      require('lspconfig').pylsp.setup({})
+    pyright = function()
+      require('lspconfig').pyright.setup({
+        settings = {
+          pyright = {
+            -- Disable Pyright's import organizer in favor of Ruff
+            disableOrganizeImports = true,
+          },
+          python = {
+            analysis = {
+              -- Set this to 'strict' if you want heavy type checking
+              typeCheckingMode = 'basic',
+            }
+          }
+        }
+      })
+    end,
+    ruff = function()
+      require('lspconfig').ruff.setup({
+        -- Disable Ruff's hover provider so it doesn't conflict with Pyright
+        on_attach = function(client, bufnr)
+          client.server_capabilities.hoverProvider = false
+        end
+      })
     end,
     clangd = function()
       require('lspconfig').clangd.setup({
         cmd = {
-        "clangd",
+          "clangd",
+          "--clang-tidy",
           "--background-index",
           "--suggest-missing-includes",
           "--completion-style=bundled",
-          "--header-insertion=iwyu"
+          "--header-insertion=iwyu",
+          "--fallback-style=llvm",
+          "--function-arg-placeholders"
+        },
+        init_options = {
+          usePlaceholders = true,
+          completeUnimported = true,
+          clangdFileStatus = true,
         },
       })
     end,

@@ -1,6 +1,6 @@
 -- Linting autocmd
 require("lint").linters_by_ft = {
-    python = {"pylint", "codespell"},
+    python = {"ruff", "codespell"},
     cpp = {"codespell", "cpplint"},
     tex = {"chktex", "codespell"},
     cmake = {"cmakelint"},
@@ -18,5 +18,5 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 })
 
 -- Set pylint to work in virtualenv
-require('lint').linters.pylint.cmd = 'python'
-require('lint').linters.pylint.args = {'-m', 'pylint', '-f', 'json', '--max-line-length', '88'} --black default
+-- require('lint').linters.pylint.cmd = 'python'
+-- require('lint').linters.pylint.args = {'-m', 'pylint', '-f', 'json', '--max-line-length', '88'} --black default

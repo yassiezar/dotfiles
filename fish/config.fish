@@ -67,3 +67,6 @@ set -g TALOSCONFIG /home/jaycee/workspace/FruitCast/fc-talos/talosconfig
 
 # Bat theme
 set -g BAT_THEME "Monokai Extended Origin"
+
+# Source Kubernetes aliases
+source $HOME/.config/fish/functions/k.fish
