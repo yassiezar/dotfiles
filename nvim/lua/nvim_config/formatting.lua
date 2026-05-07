@@ -59,9 +59,7 @@ formatter.setup({
     typescript = {
       function()
         return{
-          exe = "tsfmt",
-          args = {'-r'},
-          stdin = false,
+          exe = "prettier",
         }
       end
     },
@@ -96,4 +94,4 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = {"*.html"}, command 
 -- vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = {"*.yaml", "*.yml"}, command = "FormatWriteLock" })
 -- vim.api.nvim_create_autocmd({ "BufWritePost" }, { pattern = {"*.json"}, command = "FormatWriteLock" })
 vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = {"*.rs"}, command = "lua vim.lsp.buf.format()" })
--- vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = {"*.ts", "*.tsx"}, command = "lua vim.lsp.buf.format()" })
+vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = {"*.ts", "*.tsx"}, command = "lua vim.lsp.buf.format()" })
