@@ -113,11 +113,39 @@ return require("packer").startup(function()
     use('mfussenegger/nvim-dap-python')
     use('leoluz/nvim-dap-go')
 
-    use(
-      {'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function()
-          require('nerdicons').setup({}) end
-      }
-    )
+    use {
+        'glepnir/nerdicons.nvim',
+        cmd = 'NerdIcons',
+        config = function()
+          require('nerdicons').setup({})
+        end
+    }
+
+    -- Git support via neogit
+    use {
+      'NeogitOrg/neogit',
+      cmd = 'Neogit',
+      config = function()
+        require("neogit").setup({
+            process_spinner = false,
+            kind = "floating",
+            disable_line_numbers = false,
+            disable_relative_line_numbers = false,
+            integrations = {
+              telescope = true,
+              codediff = true,
+              fzf_lua = true,
+            },
+            diff_viewer = "codediff",
+          }
+        )
+      end,
+      requires = {
+        'esmuellert/codediff.nvim',      -- optional
+        'nvim-telescope/telescope.nvim', -- optional
+        'ibhagwan/fzf-lua',              -- optional
+      },
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

@@ -8,6 +8,7 @@ require("nvim_config.formatting")
 require("nvim_config.snippet")
 require("nvim_config.lint")
 require("nvim_config.ai")
+require("nvim_config.git")
 
 -- Load if on a Mathworks machine
 require("nvim_config.mathworks")
@@ -41,7 +42,7 @@ vim.api.nvim_set_keymap('v', '<A-j>', ":m '>+1<cr>gv=gv", opts)
 vim.api.nvim_set_keymap('v', '<A-k>', ":m '<-2<cr>gv=gv", opts)
 vim.api.nvim_set_keymap('n',  '<leader>doc', '<cmd>lua require("neogen").generate()<cr>', opts)
 
--- GLobal copy and paste
+-- Global copy and paste
 vim.api.nvim_set_keymap('n', "<leader>y", [["+y]], opts)
 vim.api.nvim_set_keymap('v', "<leader>y", [["+y]], opts)
 vim.api.nvim_set_keymap('n', "<leader>Y", [["+Y]], opts)
