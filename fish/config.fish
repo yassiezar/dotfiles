@@ -70,3 +70,7 @@ set -g BAT_THEME "Monokai Extended Origin"
 
 # Source Kubernetes aliases
 source $HOME/.config/fish/functions/k.fish
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/home/jaycee/.local/bin" $PATH
