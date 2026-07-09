@@ -1,0 +1,18 @@
+{
+  "lsp": {
+    "python": {
+      "command": "pyright-langserver",
+      "args": ["--stdio"]
+    },
+    "typescript": {
+      "command": "typescript-language-server",
+      "args": ["--stdio"]
+    }
+  },
+  "formatters": {
+    "python": "ruff format",
+    "javascript": "prettier --write",
+    "json": "prettier --write",
+    "go": "gofmt"
+  }
+}
