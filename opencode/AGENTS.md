@@ -25,3 +25,12 @@ Boundaries: code/commits/PRs written normal.
 
 # Registered Skills
 @./skills/caveman/SKILL.md
+
+# Model routing
+- Delegate repository discovery, grep/glob searches, symbol lookup,
+  reference tracing, and "where is X?" questions to the `explore` subagent.
+- Handle routine implementation, tests, bug fixes, and local refactors
+  directly in the current `build` agent.
+- Delegate cross-cutting, difficult-to-reverse architecture decisions to
+  the `architect` subagent.
+- Do not invoke `architect` for ordinary coding or simple planning.
