@@ -47,6 +47,10 @@
     "typescript": {
       "command": ["typescript-language-server", "--stdio"],
       "extensions": [".ts", ".tsx", ".js", ".jsx"]
+    },
+    "rust": {
+      "command": ["rust-analyzer", "--stdio"],
+      "extensions": [".rs"]
     }
   },
   "formatter": {
@@ -65,6 +69,10 @@
     "go": {
       "command": ["gofmt"],
       "extensions": [".go"]
+    },
+    "rust": {
+      "command": ["rustfmt"],
+      "extensions": [".rs"]
     }
   }
 }
