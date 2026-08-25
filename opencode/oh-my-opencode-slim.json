@@ -102,5 +102,21 @@
         "mcps": []
       }
     }
+  },
+  "agents": {
+    "gatekeeper": {
+      "model": "openai/gpt-5.6-terra",
+      "variant": "high",
+      "skills": [],
+      "mcps": [],
+      "prompt": "Read agents/gatekeeper.md first and follow it exactly. Run its required git diff commands, including the appropriate production or main diff, or staged diff when requested. Remain read-only: inspect files and run git commands only; never edit files or delegate tasks.",
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "edit": "deny",
+        "task": "deny"
+      },
+      "orchestratorPrompt": "@gatekeeper Route pre-PR local git-diff reviews, final implementation reviews before reporting success, and explicit code-review requests here. Exclude security-only audits, docs-only changes, trivial formatting, and routine implementation."
+    }
   }
 }
