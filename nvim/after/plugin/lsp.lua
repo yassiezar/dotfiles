@@ -1,5 +1,13 @@
 local lsp = require('lsp-zero')
 
+local function git_root(bufnr, on_dir)
+  local root = vim.fs.root(bufnr, { '.git' })
+
+  if root then
+    on_dir(root)
+  end
+end
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
@@ -25,30 +33,8 @@ require('mason-lspconfig').setup({
         }
       })
     end,
-    pyright = function()
-      require('lspconfig').pyright.setup({
-        settings = {
-          pyright = {
-            -- Disable Pyright's import organizer in favor of Ruff
-            disableOrganizeImports = true,
-          },
-          python = {
-            analysis = {
-              -- Set this to 'strict' if you want heavy type checking
-              typeCheckingMode = 'basic',
-            }
-          }
-        }
-      })
-    end,
-    ruff = function()
-      require('lspconfig').ruff.setup({
-        -- Disable Ruff's hover provider so it doesn't conflict with Pyright
-        on_attach = function(client, bufnr)
-          client.server_capabilities.hoverProvider = false
-        end
-      })
-    end,
+    pyright = function() end,
+    ruff = function() end,
     clangd = function()
       require('lspconfig').clangd.setup({
         cmd = {
@@ -70,6 +56,46 @@ require('mason-lspconfig').setup({
     end,
   },
 })
+
+vim.lsp.config('pyright', {
+  root_dir = git_root,
+  before_init = function(_, config)
+    local python = config.root_dir .. '/.venv/bin/python'
+
+    if vim.uv.fs_stat(python) then
+      config.settings.python.pythonPath = python
+      config.settings.python.analysis.extraPaths = { config.root_dir }
+    end
+  end,
+  settings = {
+    pyright = {
+      disableOrganizeImports = true,
+    },
+    python = {
+      analysis = {
+        typeCheckingMode = 'basic',
+        autoSearchPaths = true,
+        diagnosticMode = 'openFilesOnly',
+      },
+    },
+  },
+})
+
+vim.lsp.config('ruff', {
+  root_dir = git_root,
+  on_new_config = function(config, root)
+    local ruff = root .. '/.venv/bin/ruff'
+
+    if vim.uv.fs_stat(ruff) then
+      config.cmd = { ruff, 'server' }
+    end
+  end,
+  on_attach = function(client)
+    client.server_capabilities.hoverProvider = false
+  end,
+})
+
+vim.lsp.enable({ 'pyright', 'ruff' })
 
 lsp.set_sign_icons({
   error = 'E',

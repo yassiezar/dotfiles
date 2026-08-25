@@ -1,6 +1,6 @@
 -- Linting autocmd
 require("lint").linters_by_ft = {
-    python = {"ruff", "codespell"},
+    python = {"codespell"},
     cpp = {"codespell", "cpplint"},
     tex = {"chktex", "codespell"},
     cmake = {"cmakelint"},
