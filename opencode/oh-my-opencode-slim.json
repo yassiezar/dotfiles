@@ -109,14 +109,28 @@
       "variant": "high",
       "skills": [],
       "mcps": [],
-      "prompt": "Read agents/gatekeeper.md first and follow it exactly. Run its required git diff commands, including the appropriate production or main diff, or staged diff when requested. Remain read-only: inspect files and run git commands only; never edit files or delegate tasks.",
+      "prompt": "Read agents/gatekeeper.md first and follow it exactly. Review only local staged, unstaged, and requested untracked changes before a remote Pull Request exists. Determine a trustworthy base ref safely, inspect changed and surrounding code, and trace affected interfaces when warranted. Remain read-only: inspect files and run local git commands only; never use GitHub, edit files, or delegate tasks.",
       "permission": {
         "read": "allow",
         "bash": "allow",
         "edit": "deny",
         "task": "deny"
       },
-      "orchestratorPrompt": "@gatekeeper Route pre-PR local git-diff reviews, final implementation reviews before reporting success, and explicit code-review requests here. Exclude security-only audits, docs-only changes, trivial formatting, and routine implementation."
+      "orchestratorPrompt": "@gatekeeper Route local git-diff and pre-PR implementation reviews here, including final local review before reporting implementation success. This agent owns local staged, unstaged, and untracked change review only. Route remote GitHub Pull Request review, a Pull Request URL or number, and requested inspection of GitHub Pull Request changes or metadata to @pr-reviewer. Exclude security-only audits and routine implementation."
+    },
+    "pr-reviewer": {
+      "model": "openai/gpt-5.6-terra",
+      "variant": "high",
+      "skills": [],
+      "mcps": [],
+      "prompt": "Read agents/pr-reviewer.md first and follow it exactly. Review the supplied remote GitHub Pull Request URL or number, or current Pull Request context, using gh CLI and an isolated temporary git worktree. Never alter the current working tree, write code, edit the Pull Request, post comments, delegate tasks, or run destructive commands.",
+      "permission": {
+        "read": "allow",
+        "bash": "allow",
+        "edit": "deny",
+        "task": "deny"
+      },
+      "orchestratorPrompt": "@pr-reviewer Route remote GitHub Pull Request reviews here. Use for Pull Request URLs or numbers, current Pull Request review, and requested inspection of GitHub Pull Request changes, metadata, commits, linked issues, or checks. Use isolated temporary git worktree only. Route local git diff, pre-PR, and final local implementation review to @gatekeeper. Exclude security-only audits and routine implementation."
     }
   }
 }
