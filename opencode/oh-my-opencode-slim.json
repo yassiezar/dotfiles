@@ -9,10 +9,7 @@
         "skills": [
           "*"
         ],
-        "mcps": [
-          "*",
-          "!context7"
-        ]
+        "mcps": []
       },
       "oracle": {
         "model": "openai/gpt-5.6-sol",
@@ -27,8 +24,7 @@
         "variant": "low",
         "skills": [],
         "mcps": [
-          "context7",
-          "gh_grep"
+          "context7"
         ]
       },
       "explorer": {
@@ -57,10 +53,7 @@
         "skills": [
           "*"
         ],
-        "mcps": [
-          "*",
-          "!context7"
-        ]
+        "mcps": []
       },
       "oracle": {
         "model": "opencode-go/qwen3.7-max",
@@ -81,8 +74,7 @@
         "variant": "high",
         "skills": [],
         "mcps": [
-          "context7",
-          "gh_grep"
+          "context7"
         ]
       },
       "designer": {
@@ -112,11 +104,27 @@
       "prompt": "Read agents/gatekeeper.md first and follow it exactly. Review only local staged, unstaged, and requested untracked changes before a remote Pull Request exists. Determine a trustworthy base ref safely, inspect changed and surrounding code, and trace affected interfaces when warranted. Remain read-only: inspect files and run local git commands only; never use GitHub, edit files, or delegate tasks.",
       "permission": {
         "read": "allow",
-        "bash": "allow",
+        "bash": {
+          "*": "allow",
+          "gh": "deny",
+          "gh *": "deny",
+          "hub": "deny",
+          "hub *": "deny",
+          "git push": "deny",
+          "git push *": "deny",
+          "git -C * push": "deny",
+          "git -C * push *": "deny",
+          "curl *github.com*": "deny",
+          "curl *api.github.com*": "deny",
+          "wget *github.com*": "deny",
+          "wget *api.github.com*": "deny",
+          "http *github.com*": "deny",
+          "http *api.github.com*": "deny"
+        },
         "edit": "deny",
         "task": "deny"
       },
-      "orchestratorPrompt": "@gatekeeper Route local git-diff and pre-PR implementation reviews here, including final local review before reporting implementation success. This agent owns local staged, unstaged, and untracked change review only. Route remote GitHub Pull Request review, a Pull Request URL or number, and requested inspection of GitHub Pull Request changes or metadata to @pr-reviewer. Exclude security-only audits and routine implementation."
+      "orchestratorPrompt": "@gatekeeper Route local git-diff and pre-PR implementation reviews here, including final local review before reporting implementation success. This agent owns local staged, unstaged, and untracked change review only. Route remote GitHub Pull Request review, a Pull Request URL or number, and requested inspection of GitHub Pull Request changes or metadata to @pr-reviewer. Exclude security-only audits and routine implementation. All agents must never post, reply, approve, request changes, merge, label, close, reopen, or otherwise mutate GitHub; return draft text only. PR reviewers remain read-only."
     },
     "pr-reviewer": {
       "model": "openai/gpt-5.6-terra",
@@ -352,7 +360,7 @@
         "edit": "deny",
         "task": "deny"
       },
-      "orchestratorPrompt": "@pr-reviewer Route remote GitHub Pull Request reviews here. Use for Pull Request URLs or numbers, current Pull Request review, and requested inspection of GitHub Pull Request changes, metadata, commits, linked issues, or checks. Use isolated temporary git worktree only. Route local git diff, pre-PR, and final local implementation review to @gatekeeper. Exclude security-only audits and routine implementation."
+      "orchestratorPrompt": "@pr-reviewer Route remote GitHub Pull Request reviews here. Use for Pull Request URLs or numbers, current Pull Request review, and requested inspection of GitHub Pull Request changes, metadata, commits, linked issues, or checks. Use isolated temporary git worktree only. Route local git diff, pre-PR, and final local implementation review to @gatekeeper. Exclude security-only audits and routine implementation. All agents must never post, reply, approve, request changes, merge, label, close, reopen, or otherwise mutate GitHub; return draft text only. PR reviewers remain read-only."
     },
     "pr-feedback-responder": {
       "model": "openai/gpt-5.6-terra",
@@ -588,7 +596,7 @@
         "edit": "deny",
         "task": "deny"
       },
-      "orchestratorPrompt": "@pr-feedback-responder Route remote Pull Request feedback triage here: open review comments, conversation comments, unresolved review threads, deciding response to PR comments, and triaging requested changes. Use for Pull Request feedback only, with an isolated temporary git worktree. Direct remote Pull Request implementation review remains @pr-reviewer. Route code changes to implementation agents and local pre-PR review to @gatekeeper. Exclude security-only audits."
+      "orchestratorPrompt": "@pr-feedback-responder Route remote Pull Request feedback triage here: open review comments, conversation comments, unresolved review threads, deciding response to PR comments, and triaging requested changes. Use for Pull Request feedback only, with an isolated temporary git worktree. Direct remote Pull Request implementation review remains @pr-reviewer. Route code changes to implementation agents and local pre-PR review to @gatekeeper. Exclude security-only audits. All agents must never post, reply, approve, request changes, merge, label, close, reopen, or otherwise mutate GitHub; return draft text only. PR reviewers remain read-only."
     }
   }
 }

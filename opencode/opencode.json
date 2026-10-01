@@ -9,40 +9,211 @@
   "agent": {
     "build": {
       "mode": "primary",
-      "model": "openai/gpt-5.6-terra"
+      "model": "openai/gpt-5.6-terra",
+      "permission": {
+        "bash": {
+          "*": "allow",
+          "gh": "deny",
+          "gh *": "deny",
+          "hub": "deny",
+          "hub *": "deny",
+          "git push": "deny",
+          "git push *": "deny",
+          "git -C * push": "deny",
+          "git -C * push *": "deny",
+          "curl *github.com*": "deny",
+          "curl *api.github.com*": "deny",
+          "wget *github.com*": "deny",
+          "wget *api.github.com*": "deny",
+          "http *github.com*": "deny",
+          "http *api.github.com*": "deny"
+        }
+      }
     },
     "explore": {
       "mode": "subagent",
       "model": "openai/gpt-5.6-luna-fast",
-      "disable": true
+      "disable": true,
+      "permission": {
+        "bash": {
+          "*": "allow",
+          "gh": "deny",
+          "gh *": "deny",
+          "hub": "deny",
+          "hub *": "deny",
+          "git push": "deny",
+          "git push *": "deny",
+          "git -C * push": "deny",
+          "git -C * push *": "deny",
+          "curl *github.com*": "deny",
+          "curl *api.github.com*": "deny",
+          "wget *github.com*": "deny",
+          "wget *api.github.com*": "deny",
+          "http *github.com*": "deny",
+          "http *api.github.com*": "deny"
+        }
+      }
     },
     "plan": {
       "mode": "primary",
-      "model": "openai/gpt-5.6-sol"
+      "model": "openai/gpt-5.6-sol",
+      "permission": {
+        "bash": {
+          "*": "allow",
+          "gh": "deny",
+          "gh *": "deny",
+          "hub": "deny",
+          "hub *": "deny",
+          "git push": "deny",
+          "git push *": "deny",
+          "git -C * push": "deny",
+          "git -C * push *": "deny",
+          "curl *github.com*": "deny",
+          "curl *api.github.com*": "deny",
+          "wget *github.com*": "deny",
+          "wget *api.github.com*": "deny",
+          "http *github.com*": "deny",
+          "http *api.github.com*": "deny"
+        }
+      }
     },
     "general": {
       "mode": "subagent",
       "model": "openai/gpt-5.6-sol",
-      "disable": true
+      "disable": true,
+      "permission": {
+        "bash": {
+          "*": "allow",
+          "gh": "deny",
+          "gh *": "deny",
+          "hub": "deny",
+          "hub *": "deny",
+          "git push": "deny",
+          "git push *": "deny",
+          "git -C * push": "deny",
+          "git -C * push *": "deny",
+          "curl *github.com*": "deny",
+          "curl *api.github.com*": "deny",
+          "wget *github.com*": "deny",
+          "wget *api.github.com*": "deny",
+          "http *github.com*": "deny",
+          "http *api.github.com*": "deny"
+        }
+      }
     },
     "scout": {
       "mode": "subagent",
-      "model": "openai/gpt-5.6-luna"
+      "model": "openai/gpt-5.6-luna",
+      "permission": {
+        "bash": {
+          "*": "allow",
+          "gh": "deny",
+          "gh *": "deny",
+          "hub": "deny",
+          "hub *": "deny",
+          "git push": "deny",
+          "git push *": "deny",
+          "git -C * push": "deny",
+          "git -C * push *": "deny",
+          "curl *github.com*": "deny",
+          "curl *api.github.com*": "deny",
+          "wget *github.com*": "deny",
+          "wget *api.github.com*": "deny",
+          "http *github.com*": "deny",
+          "http *api.github.com*": "deny"
+        }
+      }
     },
     "compaction": {
       "mode": "primary",
-      "model": "openai/gpt-5.6-luna"
+      "model": "openai/gpt-5.6-luna",
+      "permission": {
+        "bash": {
+          "*": "allow",
+          "gh": "deny",
+          "gh *": "deny",
+          "hub": "deny",
+          "hub *": "deny",
+          "git push": "deny",
+          "git push *": "deny",
+          "git -C * push": "deny",
+          "git -C * push *": "deny",
+          "curl *github.com*": "deny",
+          "curl *api.github.com*": "deny",
+          "wget *github.com*": "deny",
+          "wget *api.github.com*": "deny",
+          "http *github.com*": "deny",
+          "http *api.github.com*": "deny"
+        }
+      }
     },
     "title": {
       "mode": "primary",
-      "model": "openai/gpt-5.6-luna-fast"
+      "model": "openai/gpt-5.6-luna-fast",
+      "permission": {
+        "bash": {
+          "*": "allow",
+          "gh": "deny",
+          "gh *": "deny",
+          "hub": "deny",
+          "hub *": "deny",
+          "git push": "deny",
+          "git push *": "deny",
+          "git -C * push": "deny",
+          "git -C * push *": "deny",
+          "curl *github.com*": "deny",
+          "curl *api.github.com*": "deny",
+          "wget *github.com*": "deny",
+          "wget *api.github.com*": "deny",
+          "http *github.com*": "deny",
+          "http *api.github.com*": "deny"
+        }
+      }
     },
     "summary": {
       "mode": "primary",
-      "model": "openai/gpt-5.6-luna-fast"
+      "model": "openai/gpt-5.6-luna-fast",
+      "permission": {
+        "bash": {
+          "*": "allow",
+          "gh": "deny",
+          "gh *": "deny",
+          "hub": "deny",
+          "hub *": "deny",
+          "git push": "deny",
+          "git push *": "deny",
+          "git -C * push": "deny",
+          "git -C * push *": "deny",
+          "curl *github.com*": "deny",
+          "curl *api.github.com*": "deny",
+          "wget *github.com*": "deny",
+          "wget *api.github.com*": "deny",
+          "http *github.com*": "deny",
+          "http *api.github.com*": "deny"
+        }
+      }
     }
   },
   "autoshare": false,
+  "permission": {
+    "bash": {
+      "*": "allow",
+      "gh": "deny",
+      "gh *": "deny",
+      "hub": "deny",
+      "hub *": "deny",
+      "git push": "deny",
+      "git push *": "deny",
+      "git -C * push": "deny",
+      "git -C * push *": "deny",
+      "curl *github.com*": "deny",
+      "curl *api.github.com*": "deny",
+      "wget *github.com*": "deny",
+      "wget *api.github.com*": "deny",
+      "http *github.com*": "deny",
+      "http *api.github.com*": "deny"
+    }
+  },
   "lsp": {
     "python": {
       "command": [
