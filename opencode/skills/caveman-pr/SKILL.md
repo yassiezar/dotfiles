@@ -9,6 +9,8 @@ Write pull request descriptions terse and actionable. Zero fluff. No marketing s
 
 ## Rules
 
+Follow any guidelines given in the repo's DEVELOPMENT.md, or similar, file if they have any.
+
 **Format:** You must output exactly three sections, using markdown headers.
 1. `## Context`: 1-2 bullet points explaining the "why" or linking the issue/ticket.
 2. `## Changes`: Bulleted list of the actual high-level architectural or logical changes. 
