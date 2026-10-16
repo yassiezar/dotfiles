@@ -101,7 +101,7 @@
     },
     "agents": {
         "gatekeeper": {
-            "model": "openai/gpt-5.6-terra",
+            "model": "openai/gpt-6-terra",
             "variant": "high",
             "skills": [],
             "mcps": [],
@@ -115,7 +115,7 @@
             "orchestratorPrompt": "@gatekeeper Route reviews of explicitly supplied local files or diffs here, including final supplied-material review before reporting implementation success. This agent owns supplied material only and has no local Git inspection capability. Route remote GitHub Pull Request review, a Pull Request URL or number, and requested inspection of GitHub Pull Request changes or metadata to @pr-reviewer. Exclude security-only audits and routine implementation. Normal agents have no Bash access; only PR agents may perform constrained read-only GitHub inspection. All agents must never post, reply, approve, request changes, merge, label, close, reopen, or otherwise mutate GitHub; return draft text only. PR reviewers remain read-only."
         },
         "pr-reviewer": {
-            "model": "openai/gpt-5.6-terra",
+            "model": "openai/gpt-6-terra",
             "variant": "high",
             "skills": [],
             "mcps": [],
@@ -213,7 +213,7 @@
             "orchestratorPrompt": "@pr-reviewer Route remote GitHub Pull Request reviews here. Use for Pull Request URLs or numbers, current Pull Request review, and requested inspection of GitHub Pull Request changes, metadata, commits, linked issues, or checks. Use constrained read-only gh CLI commands only; no Git, local checkout, or worktree. Route supplied local files or diffs to @gatekeeper. Exclude security-only audits and routine implementation. Normal agents have no Bash access; only PR agents may perform constrained read-only GitHub inspection. All agents must never post, reply, approve, request changes, merge, label, close, reopen, or otherwise mutate GitHub; return draft text only. PR reviewers remain read-only."
         },
         "pr-feedback-responder": {
-            "model": "openai/gpt-5.6-terra",
+            "model": "openai/gpt-6-terra",
             "variant": "high",
             "skills": [],
             "mcps": [],
