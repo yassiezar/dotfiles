@@ -3,7 +3,7 @@ name: pr-feedback-responder
 description: >
   Strict read-only triage agent for feedback on remote GitHub Pull Requests. Uses gh CLI remote inspection to assess open review comments and draft technical replies.
 mode: subagent
-model: openai/gpt-5.6-terra
+model: openai/gpt-6-terra
 variant: high
 permission:
   read: allow

@@ -3,7 +3,7 @@ name: gatekeeper
 description: >
   Strict pre-PR implementation reviewer. Analyses explicitly supplied files and diffs against intended behaviour and system impact. Read-only.
 mode: subagent
-model: openai/gpt-5.6-terra
+model: openai/gpt-6-terra
 permission:
   read: allow
   bash: deny

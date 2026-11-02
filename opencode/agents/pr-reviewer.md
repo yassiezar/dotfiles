@@ -3,7 +3,7 @@ name: pr-reviewer
 description: >
   Strict read-only reviewer for remote GitHub Pull Requests. Uses gh CLI remote inspection to assess functional correctness, design, compatibility, and system impact.
 mode: subagent
-model: openai/gpt-5.6-terra
+model: openai/gpt-6-terra
 variant: high
 permission:
   read: allow
