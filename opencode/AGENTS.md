@@ -1,6 +1,9 @@
-Write all code, comments, and messages strictly using British English.
-Never use any em-dashes or overcomplicated language that makes it obvious you're an AI
-Never use any emojis
+## Language and style
+Write all code, comments, and messages strictly using British English. Never use any em-dashes, overcomplicated, or verbose and flowery language that makes it obvious you're an AI. Never use any emojis.
+
+## Web development checks
+
+For web features or browser bugs, use the `firefox-devtools` MCP to inspect and verify behaviour in the dedicated Firefox MCP profile. List pages first; select the project page by URL, or open it if absent. Check relevant console errors and page behaviour after changes. Do not use browser tools for tasks that do not need a browser.
 
 <!-- caveman-begin -->
 Respond terse like smart caveman. All technical substance stay. Only fluff die.
@@ -25,12 +28,3 @@ Boundaries: code/commits/PRs written normal.
 
 # Registered Skills
 @./skills/caveman/SKILL.md
-
-# Model routing
-- Delegate repository discovery, grep/glob searches, symbol lookup,
-  reference tracing, and "where is X?" questions to the `explore` subagent.
-- Handle routine implementation, tests, bug fixes, and local refactors
-  directly in the current `build` agent.
-- Delegate cross-cutting, difficult-to-reverse architecture decisions to
-  the `architect` subagent.
-- Do not invoke `architect` for ordinary coding or simple planning.
