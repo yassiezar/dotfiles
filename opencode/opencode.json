@@ -31,7 +31,7 @@
   },
   "autoshare": false,
   "permission": {
-    "bash": "deny"
+    "bash": "ask"
   },
   "lsp": {
     "python": {
