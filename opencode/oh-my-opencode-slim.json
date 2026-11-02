@@ -41,13 +41,17 @@
                 "model": "openai/gpt-6-luna",
                 "variant": "medium",
                 "skills": [],
-                "mcps": []
+                "mcps": [
+                  "firefox-devtools"
+                ]
             },
             "fixer": {
                 "model": "openai/gpt-6-luna",
                 "variant": "high",
                 "skills": [],
-                "mcps": []
+                "mcps": [
+                  "firefox-devtools"
+                ]
             }
         },
         "opencode-go": {
@@ -84,13 +88,17 @@
             "designer": {
                 "model": "opencode-go/kimi-k2.7-code",
                 "skills": [],
-                "mcps": []
+                "mcps": [
+                  "firefox-devtools"
+                ]
             },
             "fixer": {
                 "model": "opencode-go/deepseek-v4-flash",
                 "variant": "high",
                 "skills": [],
-                "mcps": []
+                "mcps": [
+                  "firefox-devtools"
+                ]
             },
             "observer": {
                 "model": "opencode-go/mimo-v2.5",
