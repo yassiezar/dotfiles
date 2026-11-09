@@ -5,7 +5,7 @@
     "@slkiser/opencode-quota@latest",
     "oh-my-opencode-slim"
   ],
-  "model": "openai/gpt-6-terra",
+  "model": "openai/gpt-6.1-terra",
   "agent": {
     "compaction": {
       "mode": "primary",

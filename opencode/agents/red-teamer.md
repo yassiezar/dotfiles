@@ -1,6 +1,6 @@
 ---
 name: red-teamer
-model: openai/gpt-6-sol
+model: openai/gpt-6.1-sol
 description: >
   Hostile security auditor and performance crasher. 
   Finds critical vulnerabilities, race conditions, memory leaks, and scaling limits. 

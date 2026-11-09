@@ -122,7 +122,7 @@ Edit the active preset under `presets.<preset>.<agent>`:
   "presets": {
     "openai": {
       "orchestrator": {
-        "model": "openai/gpt-6-terra",
+        "model": "openai/gpt-6.1-terra",
         "variant": "high",
         "skills": ["*"],
         "mcps": ["*", "!context7"]
